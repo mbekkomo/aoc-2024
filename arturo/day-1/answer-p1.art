@@ -13,5 +13,5 @@ do [
 	sort 'b
 
 	loop 0..((size a) - 1) 'x -> 'result ++ (abs (a\[x] - b\[x]))
-	print sum result
+	print ~"Part 1: |sum result|"
 ]

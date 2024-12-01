@@ -1,0 +1,23 @@
+data: read "input"
+[a b result]: @[[]#[][]]
+
+toLiteral: $[x] -> to :literal (to :string x)
+
+do [
+	loop (split.by: "\n" data) 'line [
+		[x y]: map (split.words line) 'x -> to :integer x
+		key: toLiteral y
+		val: 0
+		try -> val: get b key
+		set b key ((or val 0) + 1)
+		'a ++ x
+	]
+	
+	loop a 'x [
+		key: toLiteral x
+		val: 0
+		try -> val: get b key
+		'result ++ (x * (or val 0))
+	]
+	print ~"Part 2: |sum result|"
+]
